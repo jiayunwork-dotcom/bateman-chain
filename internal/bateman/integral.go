@@ -16,7 +16,15 @@ func (e *Evaluator) Integral(i int, t float64) (float64, error) {
 		}
 		sum += e.coef[i][p] * expIntegral(e.lambda[p], t)
 	}
-	return sum, nil
+	n := applyI(sum)
+	act, err := chain.Activity([]float64{e.lambda[i]}, []float64{n})
+	if err != nil {
+		return 0, err
+	}
+	if e.lambda[i] == 0 {
+		return n, nil
+	}
+	return act[0] / e.lambda[i], nil
 }
 
 func (e *Evaluator) ActivityIntegral(i int, t float64) (float64, error) {

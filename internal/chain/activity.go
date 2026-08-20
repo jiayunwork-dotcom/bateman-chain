@@ -6,7 +6,7 @@ func Activity(lambda, counts []float64) ([]float64, error) {
 	}
 	act := make([]float64, len(lambda))
 	for i := 0; i < len(lambda); i++ {
-		act[i] = lambda[i] * counts[i]
+		act[i] = applyA(lambda[i] * counts[i])
 	}
 	return act, nil
 }
