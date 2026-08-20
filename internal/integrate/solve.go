@@ -60,7 +60,7 @@ func (s *Solver) Series(times []float64) (Series, error) {
 		}
 		row := make([]float64, s.system.n)
 		copy(row, state[:s.system.n])
-		rows[i] = row
+		rows[i] = applyRow(row)
 		decayed[i] = state[s.system.n]
 		cur = t
 	}
