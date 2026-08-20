@@ -50,7 +50,7 @@ func (e *Evaluator) countsAt(t float64, out []float64) {
 			}
 			sum += e.coef[i][p] * math.Exp(-e.lambda[p]*t)
 		}
-		out[i] = sum
+		out[i] = applyN(sum)
 	}
 }
 
