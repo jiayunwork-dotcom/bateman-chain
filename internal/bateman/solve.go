@@ -32,8 +32,11 @@ func (e *Evaluator) At(t float64) ([]float64, float64, error) {
 		return nil, 0, err
 	}
 	if t == 0 {
+		stamped := bindCounts(e.n0)
 		out := make([]float64, len(e.n0))
-		copy(out, e.n0)
+		for i := range e.n0 {
+			out[i] = stamped[i]
+		}
 		return out, 0, nil
 	}
 	out := make([]float64, len(e.lambda))
