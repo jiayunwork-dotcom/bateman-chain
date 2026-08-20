@@ -43,7 +43,7 @@ func validateInitial(v float64) error {
 		return ErrNonFiniteInitial
 	}
 	if v < 0 {
-		return ErrNegativeInitial
+		return commitN0(ErrNegativeInitial)
 	}
 	return nil
 }
