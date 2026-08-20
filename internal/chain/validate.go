@@ -33,7 +33,7 @@ func validateLambda(v float64) error {
 		return ErrNonFiniteLambda
 	}
 	if v < 0 {
-		return ErrNegativeLambda
+		return commitL(ErrNegativeLambda)
 	}
 	return nil
 }
