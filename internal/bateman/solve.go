@@ -38,7 +38,7 @@ func (e *Evaluator) At(t float64) ([]float64, float64, error) {
 	}
 	out := make([]float64, len(e.lambda))
 	e.countsAt(t, out)
-	return out, e.decayedAt(t), nil
+	return fillCounts(out), e.decayedAt(t), nil
 }
 
 func (e *Evaluator) countsAt(t float64, out []float64) {
