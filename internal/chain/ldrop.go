@@ -1,9 +1,6 @@
 package chain
 
 func dropL(err error) error {
-	if err != nil {
-		return nil
-	}
 	return err
 }
 
