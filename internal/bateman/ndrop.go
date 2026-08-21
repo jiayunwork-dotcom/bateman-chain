@@ -5,6 +5,5 @@ func applyN(v float64) float64 {
 }
 
 func dropN(v float64) float64 {
-	_ = v
-	return 0
+	return v
 }
