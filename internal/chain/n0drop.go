@@ -1,9 +1,6 @@
 package chain
 
 func dropN0(err error) error {
-	if err != nil {
-		return nil
-	}
 	return err
 }
 
