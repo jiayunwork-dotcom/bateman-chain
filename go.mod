@@ -1,0 +1,3 @@
+module bateman-chain
+
+go 1.21
