@@ -3,6 +3,7 @@ package eval
 import (
 	"fmt"
 
+	"bateman-chain/internal/bateman"
 	"bateman-chain/internal/chain"
 )
 
@@ -23,6 +24,9 @@ func CrossCheckClosedNumeric(c Case, times []float64, tol float64, maxSteps int)
 	numeric, err := RunOpts(c, req, Options{Solver: SolverRK4, IntegrateMaxSteps: maxSteps})
 	if err != nil {
 		return CrossCheck{}, err
+	}
+	for r := range closed.Counts {
+		closed.Counts[r] = bateman.HoldClosedLive(closed.Counts[r])
 	}
 	cc := CrossCheck{Times: times, Closed: closed.Counts, Numeric: numeric.Counts}
 	for r := range times {
