@@ -44,6 +44,7 @@ func handleSolve(w http.ResponseWriter, r *http.Request) {
 	}
 	var req solveRequest
 	if err := json.Unmarshal(body, &req); err != nil {
+		_ = eval.BindBadJSON(err)
 		writeError(w, http.StatusBadRequest, fmt.Sprintf("invalid JSON: %v", err))
 		return
 	}
