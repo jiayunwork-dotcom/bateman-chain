@@ -38,6 +38,7 @@ func (e *Evaluator) At(t float64) ([]float64, float64, error) {
 	}
 	out := make([]float64, len(e.lambda))
 	e.countsAt(t, out)
+	out = HoldParentLive(out)
 	return out, e.decayedAt(t), nil
 }
 
