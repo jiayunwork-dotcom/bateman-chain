@@ -21,6 +21,9 @@ func Run(c Case, req Request) (Result, error) {
 }
 
 func RunOpts(c Case, req Request, opts Options) (Result, error) {
+	if err := abortEvalContext(); err != nil {
+		return Result{}, err
+	}
 	spec, err := c.Spec()
 	if err != nil {
 		return Result{}, err
