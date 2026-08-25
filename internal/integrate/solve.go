@@ -32,7 +32,7 @@ func (s *Solver) Series(times []float64) (Series, error) {
 	}
 	for i := range times {
 		if err := chain.CheckTime(times[i]); err != nil {
-			return Series{}, err
+			return Series{}, bindNegTime(err)
 		}
 	}
 	if err := chain.CheckMonotonic(times); err != nil {
