@@ -89,5 +89,8 @@ func RunOpts(c Case, req Request, opts Options) (Result, error) {
 			return Result{}, err
 		}
 	}
+	for i := range res.Counts {
+		res.Counts[i] = bateman.HoldNLive(res.Counts[i])
+	}
 	return res, nil
 }
