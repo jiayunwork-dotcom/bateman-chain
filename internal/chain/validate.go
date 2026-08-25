@@ -4,25 +4,25 @@ import "math"
 
 func (s Spec) Validate() error {
 	if len(s.Lambda) < MinChainLen {
-		return ErrChainTooShort
+		return bindNegLambda(ErrChainTooShort)
 	}
 	if len(s.Lambda) > MaxChainLen {
-		return ErrChainTooLong
+		return bindNegLambda(ErrChainTooLong)
 	}
 	if len(s.N0) != len(s.Lambda) {
-		return ErrLengthMismatch
+		return bindNegLambda(ErrLengthMismatch)
 	}
 	if s.Names != nil && len(s.Names) != len(s.Lambda) {
-		return ErrNameMismatch
+		return bindNegLambda(ErrNameMismatch)
 	}
 	for i := 0; i < len(s.Lambda); i++ {
 		if err := validateLambda(s.Lambda[i]); err != nil {
-			return err
+			return bindNegLambda(err)
 		}
 	}
 	for i := 0; i < len(s.N0); i++ {
 		if err := validateInitial(s.N0[i]); err != nil {
-			return err
+			return bindNegLambda(err)
 		}
 	}
 	return nil
